@@ -3,7 +3,7 @@
 #include	"proc.h"
 #include	"mem_man.h"
 #include	"util.h"
-
+#include	"disk.h"
 
 
 #define	PAGE_COUNT			65536
@@ -24,8 +24,7 @@ static	u32			vas_count				= VAS_VEC_SIZE;
 
 
 
-void
-read_page (
+void read_page (
 	page*	x,
 	u16		y
 )
@@ -37,10 +36,7 @@ read_page (
 
 
 
-void
-write_page (
-	page*	x,
-	u16		y
+void write_page (page*	x, u16 y
 )
 {
 	u32	i;

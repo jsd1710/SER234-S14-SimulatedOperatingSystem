@@ -34,18 +34,13 @@ struct process
 } 
 process;
 
-
-
-
-
-void		blocked_enq		(process*	p,		u64		time);
+void		blocked_enq		(process* p);
 process*	blocked_deq		();
+
 void		ready_enq		(process*	p,		s32		priority_delta);
-process*	ready_deq		();
+process*	ready_deq		(s32 priority_delta);
+
 u64			time_get		();
 void		time_adv		(u32		delta);
-
-
-
 
 #endif

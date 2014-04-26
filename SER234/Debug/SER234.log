@@ -1,15 +1,35 @@
-﻿Build started 4/23/2014 4:55:46 PM.
-     1>Project "C:\Users\Jacob\documents\visual studio 2013\Projects\SER234\SER234\SER234.vcxproj" on node 2 (Build target(s)).
+﻿Build started 4/26/2014 2:06:35 PM.
+     1>Project "C:\Users\Jacob\Documents\Visual Studio 2013\Projects\SER234\SER234\SER234.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt ..\..\..\..\..\Downloads\mem_man.c ..\..\..\..\..\Downloads\proc.c
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt disk.c mem_man.c proc.c profile.c util.c
+         util.c
+         profile.c
+     1>c:\users\jacob\documents\visual studio 2013\projects\ser234\ser234\profile.c(21): warning C4013: 'rand' undefined; assuming extern returning int
          proc.c
-     1>c:\users\jacob\downloads\proc.c(3): fatal error C1083: Cannot open include file: 'pid.h': No such file or directory
+     1>c:\users\jacob\documents\visual studio 2013\projects\ser234\ser234\proc.c(72): error C2084: function 'void blocked_enq(process *)' already has a body
+                 c:\users\jacob\documents\visual studio 2013\projects\ser234\ser234\proc.h(37) : see previous definition of 'blocked_enq'
+     1>c:\users\jacob\documents\visual studio 2013\projects\ser234\ser234\proc.c(126): warning C4013: 'rand' undefined; assuming extern returning int
+     1>c:\users\jacob\documents\visual studio 2013\projects\ser234\ser234\proc.c(173): warning C4013: 'get_time' undefined; assuming extern returning int
+     1>c:\users\jacob\documents\visual studio 2013\projects\ser234\ser234\proc.c(176): warning C4013: 'virt_to_phys' undefined; assuming extern returning int
+     1>c:\users\jacob\documents\visual studio 2013\projects\ser234\ser234\proc.c(195): warning C4013: 'set_time' undefined; assuming extern returning int
+     1>c:\users\jacob\documents\visual studio 2013\projects\ser234\ser234\proc.c(197): error C2065: 'proc_code_limit' : undeclared identifier
+     1>c:\users\jacob\documents\visual studio 2013\projects\ser234\ser234\proc.c(199): warning C4013: 'virt_to_phys_read' undefined; assuming extern returning int
+     1>c:\users\jacob\documents\visual studio 2013\projects\ser234\ser234\proc.c(202): warning C4013: 'disk_time' undefined; assuming extern returning int
+     1>c:\users\jacob\documents\visual studio 2013\projects\ser234\ser234\proc.c(213): error C2065: 'proc_code_limit' : undeclared identifier
+     1>c:\users\jacob\documents\visual studio 2013\projects\ser234\ser234\proc.c(213): error C2065: 'proc_data_limit' : undeclared identifier
+     1>c:\users\jacob\documents\visual studio 2013\projects\ser234\ser234\proc.c(215): warning C4013: 'virt_to_phys_write' undefined; assuming extern returning int
          mem_man.c
+     1>c:\users\jacob\documents\visual studio 2013\projects\ser234\ser234\mem_man.c(134): warning C4013: 'disk_write' undefined; assuming extern returning int
+         disk.c
+     1>c:\users\jacob\documents\visual studio 2013\projects\ser234\ser234\disk.c(75): warning C4013: 'rand' undefined; assuming extern returning int
+     1>c:\users\jacob\documents\visual studio 2013\projects\ser234\ser234\disk.c(76): warning C4013: 'get_time' undefined; assuming extern returning int
+     1>c:\users\jacob\documents\visual studio 2013\projects\ser234\ser234\disk.c(76): warning C4018: '>' : signed/unsigned mismatch
+     1>c:\users\jacob\documents\visual studio 2013\projects\ser234\ser234\disk.c(80): warning C4013: 'read_page' undefined; assuming extern returning int
+     1>c:\users\jacob\documents\visual studio 2013\projects\ser234\ser234\disk.c(95): warning C4018: '>' : signed/unsigned mismatch
+     1>c:\users\jacob\documents\visual studio 2013\projects\ser234\ser234\disk.c(99): warning C4013: 'write_page' undefined; assuming extern returning int
          Generating Code...
-     1>c:\users\jacob\downloads\mem_man.c(83): warning C4716: 'vas_alloc' : must return a value
-     1>c:\users\jacob\downloads\mem_man.c(104): warning C4716: 'walk_page_ring' : must return a value
-     1>Done Building Project "C:\Users\Jacob\documents\visual studio 2013\Projects\SER234\SER234\SER234.vcxproj" (Build target(s)) -- FAILED.
+     1>Done Building Project "C:\Users\Jacob\Documents\Visual Studio 2013\Projects\SER234\SER234\SER234.vcxproj" (Build target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:01.48
+Time Elapsed 00:00:01.40

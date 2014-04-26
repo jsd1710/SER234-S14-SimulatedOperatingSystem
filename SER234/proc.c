@@ -4,9 +4,26 @@
 #include	"proc.h"
 
 
+#define MAX_PRIORITY 10
+#define MAX_BLOCKED 50
 
 static	u64			time			= 0;
 
+static	process*	priorityLowQueue[MAX_PRIORITY];
+static	int			priorityLowHead = 0;
+static	int			priorityLowTail = 0;
+
+static	process*	priorityMediumQueue[MAX_PRIORITY];
+static	int			priorityMediumHead = 0;
+static	int			priorityMediumTail = 0;
+
+static	process*	priorityHighQueue[MAX_PRIORITY];
+static	int			priorityHighHead = 0;
+static	int			priorityHighTail = 0;
+
+static	process*	blockedQueue[MAX_BLOCKED];
+static	int			blockedHead = 0;
+static	int			blockedTail = 0;
 
 typedef	struct	{
 	u64		_t;			// time to which process is allowed to run
@@ -46,15 +63,67 @@ struct	{
 					{	29ul,	900000,		70000000,		10000000,		2	}
 				};
 
-
-void blocked_enq(process* p, u64 time)
+void blocked_enq(process* p)
 {
+	if (blockedTail >= blockedHead)
+	{//If the tail is greater or equal to the head (it has not wrapped around the end of the array yet).
+		if (blockedTail == MAX_BLOCKED - 1)
+		{//If the tail is located at the end of the queue.
+			if (blockedHead != 0)
+			{//If the head is not zero, then wrap tail to 0.
+				blockedTail = 0;
+				blockedQueue[blockedTail] = &p;
+			}
+		}
+		else
+		{//Standard procedure:
+			blockedTail++; //Increment the tail location and add it to the blocked queue.
+			blockedQueue[blockedTail] = &p;
+		}
+	}
+	else
+	{//If the tail is less than the head (it wrapped around the end of the array).
+		if ((blockedTail + 1) != blockedHead)
+		{//If the head is not next in line:
+			blockedTail++; //Increment the tail location and add it to the blocked queue.
+			blockedQueue[blockedTail] = &p;
+		}
 
+	}
 }
 
 process* blocked_deq()
 {
-
+	if (blockedHead < blockedTail)
+	{//If the head is less than the tail (implying head != tail).
+		process* temp = &blockedQueue[blockedHead];
+		blockedQueue[blockedHead] = NULL;
+		blockedHead++;
+		return temp;
+	}
+	else if (blockedHead > blockedTail)
+	{
+		if (blockedHead == (MAX_BLOCKED - 1))
+		{
+			process* temp = &blockedQueue[blockedHead];
+			blockedQueue[blockedHead] = NULL;
+			blockedHead = 0;
+			return temp;
+		}
+		else if (blockedHead != (MAX_BLOCKED - 1))
+		{
+			process* temp = &blockedQueue[blockedHead];
+			blockedQueue[blockedHead] = NULL;
+			blockedHead++;
+			return temp;
+		}
+	}
+	else if (blockedHead == blockedTail)
+	{
+		process* temp = &blockedQueue[blockedHead];
+		blockedQueue[blockedHead] = NULL;
+		return temp;
+	}
 }
 
 void ready_enq(process* p, s32 priority_delta)
@@ -62,7 +131,7 @@ void ready_enq(process* p, s32 priority_delta)
 
 }
 
-process* ready_deq()
+process* ready_deq(s32 priority_delta)
 {
 
 }
@@ -170,7 +239,20 @@ u64 process_exec (
 		}
 	}
 }
+void scheduler()
+{
+	ready_deq(3);
+	ready_deq(3);
+	ready_deq(3);
+	ready_deq(3);
 
+	ready_deq(2);
+	ready_deq(2);
+
+	ready_deq(1);
+
+	blocked_deq();
+}
 
 
 

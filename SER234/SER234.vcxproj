@@ -10,6 +10,20 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="disk.h" />
+    <ClInclude Include="mem_man.h" />
+    <ClInclude Include="proc.h" />
+    <ClInclude Include="types.h" />
+    <ClInclude Include="util.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="disk.c" />
+    <ClCompile Include="mem_man.c" />
+    <ClCompile Include="proc.c" />
+    <ClCompile Include="profile.c" />
+    <ClCompile Include="util.c" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{1EF05ABA-4FD1-4AE6-8864-0BB5E53D09E5}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -77,21 +91,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\Downloads\disk.h" />
-    <ClInclude Include="..\..\..\..\..\Downloads\mem_man.h" />
-    <ClInclude Include="..\..\..\..\..\Downloads\proc.h" />
-    <ClInclude Include="..\..\..\..\..\Downloads\types(1).h" />
-    <ClInclude Include="..\..\..\..\..\Downloads\types.h" />
-    <ClInclude Include="..\..\..\..\..\Downloads\util.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\Downloads\disk.c" />
-    <ClCompile Include="..\..\..\..\..\Downloads\mem_man.c" />
-    <ClCompile Include="..\..\..\..\..\Downloads\proc.c" />
-    <ClCompile Include="..\..\..\..\..\Downloads\profile.c" />
-    <ClCompile Include="..\..\..\..\..\Downloads\util.c" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
