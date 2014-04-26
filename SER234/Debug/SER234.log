@@ -1,0 +1,15 @@
+﻿Build started 4/23/2014 4:55:46 PM.
+     1>Project "C:\Users\Jacob\documents\visual studio 2013\Projects\SER234\SER234\SER234.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt ..\..\..\..\..\Downloads\mem_man.c ..\..\..\..\..\Downloads\proc.c
+         proc.c
+     1>c:\users\jacob\downloads\proc.c(3): fatal error C1083: Cannot open include file: 'pid.h': No such file or directory
+         mem_man.c
+         Generating Code...
+     1>c:\users\jacob\downloads\mem_man.c(83): warning C4716: 'vas_alloc' : must return a value
+     1>c:\users\jacob\downloads\mem_man.c(104): warning C4716: 'walk_page_ring' : must return a value
+     1>Done Building Project "C:\Users\Jacob\documents\visual studio 2013\Projects\SER234\SER234\SER234.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:01.48
