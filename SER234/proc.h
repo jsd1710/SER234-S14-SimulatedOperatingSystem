@@ -6,8 +6,8 @@
 typedef 
 struct process 
 {
-	u16				_pid;
-	u32				_vas;									// Virtual Adddress Size
+	u16				_pid;									//Process ID
+	u32				_vas;									// Virtual Address Size
 	dev_type		_wait_on;
 	u32				_cs;									// Code Size
 	u32				_ds;									// Data Size

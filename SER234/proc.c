@@ -25,7 +25,8 @@ static	process*	blockedQueue[MAX_BLOCKED];
 static	int			blockedHead = 0;
 static	int			blockedTail = 0;
 
-typedef	struct	{
+typedef	struct	
+{
 	u64		_t;			// time to which process is allowed to run
 	u32*	_code_addr;
 	u32*	_code_time;
@@ -34,7 +35,8 @@ typedef	struct	{
 }
 run_time;
 
-struct	{
+struct	
+{
 	u64			_start_time;
 	u32			_run_time;
 	u32			_code_size;
@@ -195,18 +197,23 @@ u64 process_exec (
 	u32	code_trans	= virt_to_phys(code_addr);
 	u32	data_trans	= virt_to_phys(data_addr);
 
-	if (!code_trans) {
+	if (!code_trans) 
+	{
 		//page_fault code
 	}
 
-	if (!data_trans) {
+	if (!data_trans) 
+	{
 		//page_fault code
 	}
 
-	while (1) {
+	while (1) 
+	{
 		u32	t_t_t	= t - get_time(); //time_till_timer
-		if (code_time < data_time) {
-			if (code_time > t_t_t) {
+		if (code_time < data_time) 
+		{
+			if (code_time > t_t_t) 
+			{
 				code_time -= t_t_t;
 				data_time -= t_t_t;
 				return t;
@@ -216,23 +223,27 @@ u64 process_exec (
 			code_addr	= new_code_addr(code_addr, proc_code_limit);
 			code_time	= new_code_time();
 			code_trans	= virt_to_phys_read(code_addr);
-			if (!code_trans) {
+			if (!code_trans) 
+			{
 				//page_fault code
 				return disk_time();
 			}
 		}
-		else if (data_time > t_t_t) {
+		else if (data_time > t_t_t) 
+		{
 			code_time -= t_t_t;
 			data_time -= t_t_t;
 			return t;
 		}
-		else {
+		else 
+		{
 			set_time (get_time() + data_time);
 			code_time  -= data_time;
 			data_addr	= new_data_addr(data_addr, proc_code_limit, proc_data_limit);
 			data_time	= new_data_time();
 			data_trans	= virt_to_phys_write(data_addr);
-			if (!data_trans) {
+			if (!data_trans) 
+			{
 				//page_fault code
 				return disk_time();
 			}

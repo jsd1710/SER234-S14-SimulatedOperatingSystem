@@ -7,10 +7,18 @@
 
 
 typedef
-struct {
-	u64		_used	:  1;
-	u64		_dirty	:  1;
-	u64		_pinned	:  1;
+struct 
+{
+	u64		_used	:  1; 	//Read-only - Is being used by a process if true, 
+							//is not being used if false.
+							
+	u64		_dirty	:  1; 	//Present - If not present, a swap needs to occur, transferring 
+							//the data from a data store to the physical memory.
+							
+	u64		_pinned	:  1; 	//Valid - Page numbers are allocated to current executing process
+							//If not valid, page is either not in the page table, or are in 
+							//the page table but belong to another process. 
+							
 	u64				: 13;
 	u64		_l1i	: 10;	
 	u64				:  6;
@@ -27,7 +35,10 @@ void	write_page		(page*		x, 		u16		y);
 void	build_mem_avail ();
 u16		page_alloc		();
 void	page_free		(u16		x);
-int		vas_alloc		(u16		v[],	u32		size);
+
+//Allocates the references to physical memory from the page table into a contiguous 
+//virtual address space that allows the process to execute. If 
+int		vas_alloc		(u16		v[],	u32		size); 	
 void	vas_free		(u16		v[],	u32		size);
 
 

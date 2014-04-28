@@ -5,11 +5,8 @@
 
 
 
-u32
-profile_a (
-	u32		max,
-	u32*	location
-) {
+u32 profile_a(u32 max, u32* location) 
+{
 	static u32	a[32]	= {	 1,		 1,		 1,		 1,		 1,		 1,		 1,		 1, 
 							 1,		 1,		 1,		 1,		 1,		 1,		 1,		 1, 
 							 2,		 2,		 2,		 2,		 2,		 2,		 2,		 2,
@@ -27,11 +24,8 @@ profile_a (
 
 
 
-u32
-profile_b (
-	u32		max,
-	u32*	location
-) {
+u32 profile_b(u32 max, u32* location) 
+{
 	static u32	a[32]	= {	 1,		 1,		 1,		 1,		  1,	  1,	  1,	  1, 
 							 1,		 1,		 1,		 1,		  2,	  2,	  2,	  2, 
 							 2,		 2,		 3,		 3,		  3,	  3,	  4,	  4,
@@ -46,14 +40,8 @@ profile_b (
 	return b[r & 31];
 }
 
-
-
-
-u32
-profile_c (
-	u32		max,
-	u32*	location
-) {
+u32 profile_c(u32 max, u32* location) 
+{
 	static u32	a[32]	= {	 1,		 1,		 1,		 1,		  2,	  2,	   2,	   2, 
 							 3,		 3,		 3,		 4,		  4,	  4,	   5,	   5, 
 							 6,		 7,		 8,		 9,		 10,	 12,	  15,	  19,
@@ -68,14 +56,8 @@ profile_c (
 	return b[r & 31];
 }
 
-
-
-
-u32
-profile_d (
-	u32		max,
-	u32*	location
-) {
+u32 profile_d(u32 max, u32* location) 
+{
 	static u32	a[32]	= {	 1,		  1,	  2,	  2,	  3,	  3,	   4,	   4, 
 							 5,		  5,	  6,	  6,	  7,	  7,	   8,	   8, 
 							 9,		 10,	 12,	 15,	 18,	 23,	  39,	  51,
@@ -90,14 +72,7 @@ profile_d (
 	return b[r & 31];
 }
 
-
-
-
-u32
-(*profiles [4]) (
-	u32		a,
-	u32*	b
-)	=	{profile_a, profile_b, profile_c, profile_d};
+u32 (*profiles [4])(u32 a, u32* b) = {profile_a, profile_b, profile_c, profile_d};
 
 
 
