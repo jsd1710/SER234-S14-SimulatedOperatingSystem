@@ -5,44 +5,51 @@
 #include	"util.h"
 #include	"disk.h"
 
-
+//------------Constants--------------------------
+//Page
 #define	PAGE_COUNT			65536
 #define	PAGE_MASK			(PAGE_COUNT - 1)
+//VAS
 #define	VAS_VEC_SIZE		(1 << 6)
 #define	VAS_VEC_SIZE_MASK	(VAS_VEC_SIZE - 1)
 
-
-
-static	page		mem[PAGE_COUNT];
-static	u16			page_avail				= 0;
-static	mem_manage	mem_man[PAGE_COUNT]		= {0};
+//------------Member variables of mem_man--------
+static	page		mem[PAGE_COUNT];						//Pages in memory.
+static	u16			page_avail				= 0;			//The currently available page index in mem[].
+static	mem_manage	mem_man[PAGE_COUNT]		= {0};			//The page table in memory.
 static	u16			mem_offset				= 1;
-static	u64			vas_vec[VAS_VEC_SIZE]	= {0};
+static	u64			vas_vec[VAS_VEC_SIZE]	= {0};			//The 64 Virtual Address Spaces in memory.
 static	u32			vas_offset				= 0;
 static	u32			vas_count				= VAS_VEC_SIZE;
 
-
-
-
-void read_page (page* x, u16 y)
-{
-	u32	i;
-	for (i = 0; i < 512; ++i) x->_u64[i]		= mem[y]._u64[i];
-}
-
-
-
-
-void write_page (page*	x, u16 y)
+//------------Methods----------------------------
+//Reads page from data-store to memory.
+void read_page(
+		page* 	x, 	//Page table 's address on data-store.
+		u16 	y	//Page's index in the page table mem[] to write to.
+		)
 {
 	u32	i;
 	for (i = 0; i < 512; ++i) 
-	{
-		mem[y]._u64[i]	= x->_u64[i];
+	{//For the entire page of x.
+		//Copy it's contents to the page of mem[]'s page table at index y.
+		x->_u64[i] = mem[y]._u64[i];
 	}
 }
 
-
+//Writes page from memory to data-store.
+void write_page (
+		page*	x,	//Page table's address on data-store.
+		u16 	y	//Page's index in the page table mem[] to read from.
+		)
+{
+	u32	i;
+	for (i = 0; i < 512; ++i) 
+	{//For the entire page of the mem[] page table at index y.
+		//Copy it's contents to the page x.
+		mem[y]._u64[i]	= x->_u64[i];
+	}
+}
 
 
 u16 page_alloc()
@@ -54,21 +61,16 @@ u16 page_alloc()
 		//u16 page table at the beginning of the page table.
 		page_avail	= mem[page_avail]._u16[0]; 
 	} 
-	//QUESTION: What if the page_avail is not changed from 0? 
-	//It will never execute the if statement above.
-	return t;
+
+	return t; //Returns the current available page's address?
 }
 
 
-
-
-void page_free(u16 x)
+void page_free(u16 x) //Takes in the page index you want to free from the mem[] page table.
 {
-	mem[x]._u16[0]	= page_avail;
+	mem[x]._u16[0]	= page_avail; //Commits the last page to this index of mem[] and changes the page_avail to the input x.
 	page_avail		= x;
 }
-
-
 
 
 int vas_alloc (u16 v[], u32 size) 
@@ -97,8 +99,6 @@ int vas_alloc (u16 v[], u32 size)
 }
 
 
-
-
 void vas_free (u16 v[], u32 size) 
 {
 	u32	i;
@@ -109,8 +109,6 @@ void vas_free (u16 v[], u32 size)
 	}
 	vas_count += size; //Frees the proper amount of virtual address spaces.
 }
-
-
 
 
 u16 walk_page_ring ()
@@ -133,15 +131,10 @@ u16 walk_page_ring ()
 				}
 				else
 				{//Or write that page to disk.
-					disk_write(mem[i], i);
+					disk_write(mem[i], i); //QUESTION: Should this be  write_page()?
 				}
 			}
 		}
 	}
 	return 0;
 }
-
-
-
-
-

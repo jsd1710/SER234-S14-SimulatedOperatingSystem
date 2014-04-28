@@ -1,4 +1,6 @@
 #include	<stdio.h>
+#include	<stdlib.h> //For rand().
+
 #include	<math.h>
 #include	"types.h"
 #include	"proc.h"
@@ -74,13 +76,13 @@ void blocked_enq(process* p)
 			if (blockedHead != 0)
 			{//If the head is not zero, then wrap tail to 0.
 				blockedTail = 0;
-				blockedQueue[blockedTail] = &p;
+				blockedQueue[blockedTail] = p;
 			}
 		}
 		else
 		{//Standard procedure:
 			blockedTail++; //Increment the tail location and add it to the blocked queue.
-			blockedQueue[blockedTail] = &p;
+			blockedQueue[blockedTail] = p;
 		}
 	}
 	else
@@ -88,7 +90,7 @@ void blocked_enq(process* p)
 		if ((blockedTail + 1) != blockedHead)
 		{//If the head is not next in line:
 			blockedTail++; //Increment the tail location and add it to the blocked queue.
-			blockedQueue[blockedTail] = &p;
+			blockedQueue[blockedTail] = p;
 		}
 
 	}
@@ -98,7 +100,7 @@ process* blocked_deq()
 {
 	if (blockedHead < blockedTail)
 	{//If the head is less than the tail (implying head != tail).
-		process* temp = &blockedQueue[blockedHead];
+		process* temp = blockedQueue[blockedHead];
 		blockedQueue[blockedHead] = NULL;
 		blockedHead++;
 		return temp;
@@ -107,14 +109,14 @@ process* blocked_deq()
 	{
 		if (blockedHead == (MAX_BLOCKED - 1))
 		{
-			process* temp = &blockedQueue[blockedHead];
+			process* temp = blockedQueue[blockedHead];
 			blockedQueue[blockedHead] = NULL;
 			blockedHead = 0;
 			return temp;
 		}
 		else if (blockedHead != (MAX_BLOCKED - 1))
 		{
-			process* temp = &blockedQueue[blockedHead];
+			process* temp = blockedQueue[blockedHead];
 			blockedQueue[blockedHead] = NULL;
 			blockedHead++;
 			return temp;
@@ -122,7 +124,7 @@ process* blocked_deq()
 	}
 	else if (blockedHead == blockedTail)
 	{
-		process* temp = &blockedQueue[blockedHead];
+		process* temp = blockedQueue[blockedHead];
 		blockedQueue[blockedHead] = NULL;
 		return temp;
 	}
@@ -191,11 +193,11 @@ u64 process_exec (
 	u32		data_limit
 )
 {
-	u64		time	= get_time();
+	u64		time = get_time(); //Should this be new_code/data_time?
 	u32		i;
 
-	u32	code_trans	= virt_to_phys(code_addr);
-	u32	data_trans	= virt_to_phys(data_addr);
+	u32	code_trans = virt_to_phys(code_addr); //Should this be walk_page_ring?
+	u32	data_trans = virt_to_phys(data_addr); //Should this be vas_alloc?
 
 	if (!code_trans) 
 	{

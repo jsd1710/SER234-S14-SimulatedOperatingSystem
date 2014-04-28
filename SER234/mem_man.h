@@ -37,7 +37,7 @@ u16		page_alloc		();
 void	page_free		(u16		x);
 
 //Allocates the references to physical memory from the page table into a contiguous 
-//virtual address space that allows the process to execute. If 
+//virtual address space that allows the process to execute. 
 int		vas_alloc		(u16		v[],	u32		size); 	
 void	vas_free		(u16		v[],	u32		size);
 
