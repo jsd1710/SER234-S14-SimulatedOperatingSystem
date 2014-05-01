@@ -1,23 +1,21 @@
-﻿Build started 4/28/2014 4:29:17 PM.
-     1>Project "E:\School work\Arizona State University\SER 234\ser234-operating-system\SER234\SER234.vcxproj" on node 2 (Build target(s)).
+﻿Build started 5/1/2014 10:35:47 AM.
+     1>Project "F:\School work\Arizona State University\SER 234\ser234-operating-system\SER234\SER234.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt mem_man.c proc.c
          proc.c
-     1>e:\school work\arizona state university\ser 234\ser234-operating-system\ser234\proc.c(196): warning C4013: 'get_time' undefined; assuming extern returning int
-     1>e:\school work\arizona state university\ser 234\ser234-operating-system\ser234\proc.c(199): warning C4013: 'virt_to_phys' undefined; assuming extern returning int
-     1>e:\school work\arizona state university\ser 234\ser234-operating-system\ser234\proc.c(223): warning C4013: 'set_time' undefined; assuming extern returning int
-     1>e:\school work\arizona state university\ser 234\ser234-operating-system\ser234\proc.c(225): error C2065: 'proc_code_limit' : undeclared identifier
-     1>e:\school work\arizona state university\ser 234\ser234-operating-system\ser234\proc.c(227): warning C4013: 'virt_to_phys_read' undefined; assuming extern returning int
-     1>e:\school work\arizona state university\ser 234\ser234-operating-system\ser234\proc.c(231): warning C4013: 'disk_time' undefined; assuming extern returning int
-     1>e:\school work\arizona state university\ser 234\ser234-operating-system\ser234\proc.c(244): error C2065: 'proc_code_limit' : undeclared identifier
-     1>e:\school work\arizona state university\ser 234\ser234-operating-system\ser234\proc.c(244): error C2065: 'proc_data_limit' : undeclared identifier
-     1>e:\school work\arizona state university\ser 234\ser234-operating-system\ser234\proc.c(246): warning C4013: 'virt_to_phys_write' undefined; assuming extern returning int
+     1>f:\school work\arizona state university\ser 234\ser234-operating-system\ser234\proc.c(207): warning C4013: 'virt_to_phys' undefined; assuming extern returning int
+     1>f:\school work\arizona state university\ser 234\ser234-operating-system\ser234\proc.c(233): error C2065: 'proc_code_limit' : undeclared identifier
+     1>f:\school work\arizona state university\ser 234\ser234-operating-system\ser234\proc.c(235): warning C4013: 'virt_to_phys_read' undefined; assuming extern returning int
+     1>f:\school work\arizona state university\ser 234\ser234-operating-system\ser234\proc.c(239): warning C4013: 'disk_time' undefined; assuming extern returning int
+     1>f:\school work\arizona state university\ser 234\ser234-operating-system\ser234\proc.c(252): error C2065: 'proc_code_limit' : undeclared identifier
+     1>f:\school work\arizona state university\ser 234\ser234-operating-system\ser234\proc.c(252): error C2065: 'proc_data_limit' : undeclared identifier
+     1>f:\school work\arizona state university\ser 234\ser234-operating-system\ser234\proc.c(254): warning C4013: 'virt_to_phys_write' undefined; assuming extern returning int
          mem_man.c
-     1>e:\school work\arizona state university\ser 234\ser234-operating-system\ser234\mem_man.c(134): error C2440: 'function' : cannot convert from 'page' to 'u32'
-     1>e:\school work\arizona state university\ser 234\ser234-operating-system\ser234\mem_man.c(134): warning C4024: 'disk_write' : different types for formal and actual parameter 1
+     1>f:\school work\arizona state university\ser 234\ser234-operating-system\ser234\mem_man.c(134): warning C4047: 'function' : 'u32' differs in levels of indirection from 'u16 [2048]'
+     1>f:\school work\arizona state university\ser 234\ser234-operating-system\ser234\mem_man.c(134): warning C4024: 'disk_write' : different types for formal and actual parameter 1
          Generating Code...
-     1>Done Building Project "E:\School work\Arizona State University\SER 234\ser234-operating-system\SER234\SER234.vcxproj" (Build target(s)) -- FAILED.
+     1>Done Building Project "F:\School work\Arizona State University\SER 234\ser234-operating-system\SER234\SER234.vcxproj" (Build target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:01.90
+Time Elapsed 00:00:00.41

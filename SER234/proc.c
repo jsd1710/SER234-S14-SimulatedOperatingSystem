@@ -66,6 +66,14 @@ struct
 					{	28ul,	800000,		60000000,		30000000,		1	},
 					{	29ul,	900000,		70000000,		10000000,		2	}
 				};
+void set_time(u64 new_time)
+{
+	time = new_time;
+}
+u64 get_time()
+{
+	return time;
+}
 
 void blocked_enq(process* p)
 {

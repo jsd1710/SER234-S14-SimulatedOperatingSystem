@@ -131,7 +131,7 @@ u16 walk_page_ring ()
 				}
 				else
 				{//Or write that page to disk.
-					disk_write(mem[i], i); //QUESTION: Should this be  write_page()?
+					disk_write(mem[i]._u16, i); //QUESTION: Should this be  write_page()?
 				}
 			}
 		}
