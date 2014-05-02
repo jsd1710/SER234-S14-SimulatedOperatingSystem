@@ -1,6 +1,8 @@
 #include	<stdio.h>
+#include	<stdlib.h> //For rand().
 #include	"types.h"
 #include	"util.h"
+#include	"proc.h" //Added for get_time
 
 
 
@@ -66,7 +68,7 @@ u64 disk_read (u32 block,u16 addr)
 	if (delta & 1)		disk_time	+= read_latency + (delta & 0x3FFFFF);
 	else				disk_time	+= read_latency - (delta & 0x1FFFFF);
 	if (block < SWAP_SIZE) {
-		read_page(block, addr);
+		//read_page(block, addr); //AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
 	}
 	return disk_time;
 }
@@ -81,7 +83,7 @@ u64 disk_write(u32 block,u16 addr)
 	if (delta & 1)		disk_time	+= write_latency + (delta & 0x3FFFFF);
 	else				disk_time	+= write_latency - (delta & 0x1FFFFF);
 	if (block < SWAP_SIZE) {
-		write_page(block, addr);
+		//write_page(block, addr); //AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
 	}
 	return disk_time;
 }

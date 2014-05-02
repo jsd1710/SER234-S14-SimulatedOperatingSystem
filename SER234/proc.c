@@ -9,7 +9,7 @@
 #define MAX_PRIORITY 10
 #define MAX_BLOCKED 50
 
-static	u64			time			= 0;
+static	u64			_time			= 0;
 
 static	process*	priorityLowQueue[MAX_PRIORITY];
 static	int			priorityLowHead = 0;
@@ -66,13 +66,14 @@ struct
 					{	28ul,	800000,		60000000,		30000000,		1	},
 					{	29ul,	900000,		70000000,		10000000,		2	}
 				};
+
 void set_time(u64 new_time)
 {
-	time = new_time;
+	_time = new_time;
 }
 u64 get_time()
 {
-	return time;
+	return _time;
 }
 
 void blocked_enq(process* p)
@@ -130,12 +131,13 @@ process* blocked_deq()
 			return temp;
 		}
 	}
-	else if (blockedHead == blockedTail)
+	else// if (blockedHead == blockedTail)
 	{
 		process* temp = blockedQueue[blockedHead];
 		blockedQueue[blockedHead] = NULL;
 		return temp;
 	}
+	return NULL; //REPLACE.
 }
 
 void ready_enq(process* p, s32 priority_delta)
@@ -145,7 +147,7 @@ void ready_enq(process* p, s32 priority_delta)
 
 process* ready_deq(s32 priority_delta)
 {
-
+	return NULL; //REPLACE THIS.
 }
 
 
@@ -201,21 +203,8 @@ u64 process_exec (
 	u32		data_limit
 )
 {
-	u64		time = get_time(); //Should this be new_code/data_time?
-	u32		i;
-
-	u32	code_trans = virt_to_phys(code_addr); //Should this be walk_page_ring?
-	u32	data_trans = virt_to_phys(data_addr); //Should this be vas_alloc?
-
-	if (!code_trans) 
-	{
-		//page_fault code
-	}
-
-	if (!data_trans) 
-	{
-		//page_fault code
-	}
+	u32	code_trans;// = virt_to_phys(code_addr); //Should this be walk_page_ring? //AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+	u32	data_trans;// = virt_to_phys(data_addr); //Should this be vas_alloc? //AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
 
 	while (1) 
 	{
@@ -230,13 +219,13 @@ u64 process_exec (
 			}
 			set_time (get_time() + code_time);
 			data_time  -= code_time;
-			code_addr	= new_code_addr(code_addr, proc_code_limit);
+			code_addr	= new_code_addr(code_addr, code_limit);
 			code_time	= new_code_time();
-			code_trans	= virt_to_phys_read(code_addr);
-			if (!code_trans) 
+			//code_trans	= virt_to_phys_read(code_addr);
+			//if (!code_trans) 
 			{
 				//page_fault code
-				return disk_time();
+				//return disk_time();
 			}
 		}
 		else if (data_time > t_t_t) 
@@ -249,30 +238,38 @@ u64 process_exec (
 		{
 			set_time (get_time() + data_time);
 			code_time  -= data_time;
-			data_addr	= new_data_addr(data_addr, proc_code_limit, proc_data_limit);
+			data_addr	= new_data_addr(data_addr, code_limit, data_limit);
 			data_time	= new_data_time();
-			data_trans	= virt_to_phys_write(data_addr);
-			if (!data_trans) 
+			data_trans;// = virt_to_phys_write(data_addr); //AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+			//if (!data_trans) 
 			{
 				//page_fault code
-				return disk_time();
+				//return disk_time();
 			}
 		}
 	}
 }
+
 void scheduler()
 {
-	ready_deq(3);
-	ready_deq(3);
-	ready_deq(3);
-	ready_deq(3);
+	//ready_deq(3);
+	//ready_deq(3);
+	//ready_deq(3);
+	//ready_deq(3);
 
-	ready_deq(2);
-	ready_deq(2);
+	//ready_deq(2);
+	//ready_deq(2);
 
-	ready_deq(1);
+	//ready_deq(1);
 
-	blocked_deq();
+	//blocked_deq();
+}
+
+int main(void)
+{
+	printf("Hello World!");
+	getchar();
+	return 0;
 }
 
 

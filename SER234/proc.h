@@ -27,12 +27,16 @@ struct process
 	void			(*_kp)(u32 m, u32 t, u32* l, u32* d);	// kbd Profile
 	u16				_fpi;									// File Pointer Index
 	u64				_time;
+	u64				_start_time;							// Start Time of process.
 	u32				_priority;
 	struct process*	_next;
 	u16				_pti;									// Page Table Index
 	u16				_sbt		[1024];						// Swap Block Table
 } 
 process;
+
+u64			get_time();
+void		set_time		(u64 new_time);
 
 void		blocked_enq		(process* p);
 process*	blocked_deq		();

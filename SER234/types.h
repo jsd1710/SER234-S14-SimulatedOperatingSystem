@@ -30,7 +30,7 @@ union {
 	u64		_u64	[ 512];
 	s64		_s64	[ 512];
 } 
-page; //Page Table with different units of division.
+page; //Pages with different units of division.
 
 
 

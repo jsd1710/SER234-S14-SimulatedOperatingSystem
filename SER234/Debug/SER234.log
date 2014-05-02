@@ -1,21 +1,18 @@
-﻿Build started 5/1/2014 10:35:47 AM.
-     1>Project "F:\School work\Arizona State University\SER 234\ser234-operating-system\SER234\SER234.vcxproj" on node 2 (Build target(s)).
+﻿Build started 5/1/2014 6:56:05 PM.
+     1>Project "D:\School work\Arizona State University\SER 234\ser234-operating-system\SER234\SER234.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt mem_man.c proc.c
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt proc.c
          proc.c
-     1>f:\school work\arizona state university\ser 234\ser234-operating-system\ser234\proc.c(207): warning C4013: 'virt_to_phys' undefined; assuming extern returning int
-     1>f:\school work\arizona state university\ser 234\ser234-operating-system\ser234\proc.c(233): error C2065: 'proc_code_limit' : undeclared identifier
-     1>f:\school work\arizona state university\ser 234\ser234-operating-system\ser234\proc.c(235): warning C4013: 'virt_to_phys_read' undefined; assuming extern returning int
-     1>f:\school work\arizona state university\ser 234\ser234-operating-system\ser234\proc.c(239): warning C4013: 'disk_time' undefined; assuming extern returning int
-     1>f:\school work\arizona state university\ser 234\ser234-operating-system\ser234\proc.c(252): error C2065: 'proc_code_limit' : undeclared identifier
-     1>f:\school work\arizona state university\ser 234\ser234-operating-system\ser234\proc.c(252): error C2065: 'proc_data_limit' : undeclared identifier
-     1>f:\school work\arizona state university\ser 234\ser234-operating-system\ser234\proc.c(254): warning C4013: 'virt_to_phys_write' undefined; assuming extern returning int
-         mem_man.c
-     1>f:\school work\arizona state university\ser 234\ser234-operating-system\ser234\mem_man.c(134): warning C4047: 'function' : 'u32' differs in levels of indirection from 'u16 [2048]'
-     1>f:\school work\arizona state university\ser 234\ser234-operating-system\ser234\mem_man.c(134): warning C4024: 'disk_write' : different types for formal and actual parameter 1
-         Generating Code...
-     1>Done Building Project "F:\School work\Arizona State University\SER 234\ser234-operating-system\SER234\SER234.vcxproj" (Build target(s)) -- FAILED.
+     1>d:\school work\arizona state university\ser 234\ser234-operating-system\ser234\proc.c(206): warning C4101: 'code_trans' : unreferenced local variable
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\School work\Arizona State University\SER 234\ser234-operating-system\Debug\SER234.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\School work\Arizona State University\SER 234\ser234-operating-system\Debug\SER234.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\School work\Arizona State University\SER 234\ser234-operating-system\Debug\SER234.lib" /MACHINE:X86 Debug\disk.obj
+         Debug\mem_man.obj
+         Debug\proc.obj
+         Debug\profile.obj
+         Debug\util.obj
+         SER234.vcxproj -> D:\School work\Arizona State University\SER 234\ser234-operating-system\Debug\SER234.exe
+     1>Done Building Project "D:\School work\Arizona State University\SER 234\ser234-operating-system\SER234\SER234.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:00.41
+Time Elapsed 00:00:00.39
