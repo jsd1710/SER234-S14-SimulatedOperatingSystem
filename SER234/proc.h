@@ -47,4 +47,6 @@ process*	ready_deq		(s32 priority_delta);
 u64			time_get		();
 void		time_adv		(u32		delta);
 
+u64 process_exec();
+
 #endif

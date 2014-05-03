@@ -32,19 +32,19 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="proc.c">
+    <ClCompile Include="disk.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="profile.c">
+    <ClCompile Include="mem_man.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="util.c">
+    <ClCompile Include="proc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="disk.c">
+    <ClCompile Include="profile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mem_man.c">
+    <ClCompile Include="util.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

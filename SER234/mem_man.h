@@ -41,5 +41,8 @@ void	page_free		(u16		x);
 int		vas_alloc		(u16		v[],	u32		size); 	
 void	vas_free		(u16		v[],	u32		size);
 
+u32 virt_to_phys_read(u32 code_address);
+u32 virt_to_phys_write(u32 code_address);
+u32 virt_to_phys(u32 code_or_data_address);
 
 #endif

@@ -16,6 +16,8 @@ void	lb_free		(u16	v[],	u32		size);
 int		sb_alloc	(u16	v[],	u32		size);
 void	sb_free		(u16	v[],	u32		size);
 
+u64		get_disk_time();
+
 
 
 #endif
